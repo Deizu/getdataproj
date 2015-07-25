@@ -1,14 +1,6 @@
-#DONE# Should perform the following tasks
-#DONE# 1 Merges the training and the test sets to create one data set.
-#DONE# 2 Extracts only the measurements on the mean and standard deviation for each measurement. 
-#DONE# 3 Uses descriptive activity names to name the activities in the data set
-#DONE# 4 Appropriately labels the data set with descriptive variable names. 
-#DONE# 5 From the data set in step 4, creates a second, independent tidy data set with 
-   ## the average of each variable for each activity and each subject.
-   ## upload your tidy data set from step 5 as a txt file created with write.table() using row.name=FALSE
-
 # Load required packages
-library(dplyr)
+message("Loading required package: dplyr.")
+suppressPackageStartupMessages(require(dplyr,quietly=TRUE))
 
 # Pull in label information
 labels.features <- read.table("./UCI HAR Dataset/features.txt")
@@ -71,7 +63,6 @@ labels.relevant <- gsub("X",".x",labels.relevant,ignore.case=FALSE)
 labels.relevant <- gsub("Y",".y",labels.relevant,ignore.case=FALSE)
 labels.relevant <- gsub("Z",".z",labels.relevant,ignore.case=FALSE)
 names(targetset)[3:68] <- labels.relevant
-#targetset <- targetset[,c(2,1,3:68)]
 
 # Create tidy dataset of averages of each variable per subject and activity
 targetset <- tbl_df(targetset)
@@ -84,7 +75,7 @@ names(tidy_data) <- list
 
 # Remove all intermediate data
 message("Cleaning up.")
-rm(list=setdiff(ls(), c("targetset","tidy_data")))
+rm(list=setdiff(ls(), c("tidy_data")))
 
 # Write the tidy data output
 message("Writing tidy dataset to file.")
