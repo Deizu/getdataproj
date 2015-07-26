@@ -51,7 +51,11 @@ View(data)
 
 ## Citations
 1. Wickham, H. (2014). Tidy data. The Journal of Statistical Software, 59 (10). Retrieved preprint copy from http://vita.had.co.nz/papers/tidy-data.html (2015).
-dplyr package
-rstudio
-CTA David Hood https://class.coursera.org/getdata-030/forum/thread?thread_id=107
-CTA David Hood https://class.coursera.org/getdata-030/forum/thread?thread_id=37
+2. Wickham, H. (2015). dplyr: A Grammar of Data Manipulation. The Comprehensive R Archive Network. https://cran.r-project.org/web/packages/dplyr/ (2015).
+3. Hood, D. "Tidy Data and the Assignment". Accessed at https://class.coursera.org/getdata-030/forum/thread?thread_id=107 (2015).
+4. Hood, D. "David's personal course project FAQ". Accessed at https://class.coursera.org/getdata-030/forum/thread?thread_id=37 (2015).
+5. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012.
+6. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.
+7. Lichman, M. (2013). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
+Note that several citations are repeated on the *CodeBook.md* markdown document.
