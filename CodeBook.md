@@ -1,5 +1,5 @@
 # "Getting & Cleaning Data" Course Project Code Book
-This document describes the data used in this analysis, the variables selected for use, and all actions taken by the associated scripts in order to clean up the data.
+This document describes the data used in this analysis and the variables selected for use. All actions taken by the <code>run_analysis.R</code> script in order to clean up the data are covered in the *README.md* file.
 
 ----
 
@@ -99,56 +99,10 @@ The original and revised variable names used in this analysis are shown below in
 |66| 	fBodyBodyGyroJerkMag-std()| 	frequency.body.gyroscope.jerk.magnitude.standard.deviation|
 
 
-domain.target.sensor(.type)(.axis)
+Basic format of revised variable names: domain.target.sensor(.type)(.axis)
 
  * Domain refers to the time or frequency of the sensor readings.
  * Target refers to the measurement of the body's movement in space or to the relative effect of gravity.
  * Sensor refers to either the accelerometer or gyroscope sensors of the smart phone.
  * Type describes the kind of measurement.
  * Axis refers to either the X, Y, or Z axis of the phone.
-----
-
-##Transformations
-
-#### Variable name transformation
-
-The variable names for these datasets are provided in a standalone file (*/UCI HAR Dataset/features.txt*) and are read into R using <code>read.table()</code>. In order to provide more user-friendly variable names, the originals are processed using <code>gsub()</code> to remove punctuation and expand abbreviations into full words separated by periods and simultaneously drop capital letters by ignoring case during replacment. While the <code>run_analysis.R</code> script performs these operations in a vectorized fashion, the following example illustrates the process for a single variable (#1 from the list above).
-
-**Original**: tBodyAcc-mean()-X
-
-**Revised**: time.body.accelerometer.mean.x
-````
-variable <- "tBodyAcc-mean()-X"
-variable <- tolower(variable)
-variable <- gsub("-|\\(|\\)","",variable,ignore.case=FALSE)
-variable <- gsub("acc","accelerometer.",variable)
-variable <- gsub("t.body","time.body.",variable)
-variable <- gsub("acc","accelerometer.",variable)
-variable <- gsub("x",".x",variable)
-````
-
-#### Activity name clarification
-
-The activity names for these datasets are provided in a standalone file (*/UCI HAR Dataset/activity_labels.txt*) and are read into R using <code>read.table()</code>. The activities come with numerical identifiers much like those used in a relational database. This analysis flattens the activity names to lowercase using <code>tolower()</code>. The numerical identifier present in the imported datasets (see below) is converted to a factor, and then the labels for that factor are overwritten using the lowercase activity names via the <code>levels()</code> function.
-
-#### Combination of Test and Train datasets
-
-There were a total of 6 files needed to piece together the original dataset, because the others had used 70% of their results to train an algorithm and 30% of their results to test the accuracy of the algorithm they developed. These files were located in the following places.
- * /UCI HAR Dataset/test/X_test.txt
- * /UCI HAR Dataset/test/y_test.txt
- * /UCI HAR Dataset/test/subject_test.txt
- * /UCI HAR Dataset/train/X_train.txt
- * /UCI HAR Dataset/train/y_train.txt
- * /UCI HAR Dataset/train/subject_train.txt
-
-##### Combining each set individually
-
-Each of the 3 files (X, y, and subject) were read into R using <code>read.table()</code> with default settings and then combined using the <code>cbind()</code> function, placing the columns in the following order: subject, activity, measurement. In case a future user needs to parse through which observations came from which original set as they step through the <code>run_analysis.R</code> script in the future, one further <code>cbind()</code> has been used to place a column called "set" which defines the source value as either "test" or "train" appropriately. Note that this column is immediately dropped when the analysis continues, as it is not required for the final tidy data output.
-
-##### Combining the Test and Train datasets
-
-The completed Test and Train datasets are easily combined by stacking them via the <code>rbind()</code> function.
-
-#### Summarization of Mean Measurements by Subject and Activity
-
-This analysis made use of the <code>dplyr</code> package and its <code>summarize_each()</code> function to distill the contents of the grouped data into one mean measurement for each of the 66 variables of interest for every combination of subject and activity, yielding a final tidy dataset of 180 observations of 68 variables.

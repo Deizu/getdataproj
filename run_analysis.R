@@ -8,7 +8,7 @@ labels.activity <- read.table("./UCI HAR Dataset/activity_labels.txt")
 labels.activity <- tolower(as.vector(labels.activity[,2]))
 
 # Combine the Test Data into a single set
-message("Combining the test data into a single set.")
+message("Combining the test data into a single 'test' set.")
 test.data <- read.table("./UCI HAR Dataset/test/X_test.txt")
 test.activity <- read.table("./UCI HAR Dataset/test/y_test.txt")
 test.subject <- read.table("./UCI HAR Dataset/test/subject_test.txt")
@@ -16,7 +16,7 @@ test <- cbind(test.subject,test.activity,test.data)
 test[,"set"] <- cbind(rep("test",nrow(test)))
 
 # Combine the Train Data into a single set
-message("Combining the train data into a single set.")
+message("Combining the train data into a single 'train' set.")
 train.data <- read.table("./UCI HAR Dataset/train/X_train.txt")
 train.activity <- read.table("./UCI HAR Dataset/train/y_train.txt")
 train.subject <- read.table("./UCI HAR Dataset/train/subject_train.txt")
@@ -24,7 +24,7 @@ train <- cbind(train.subject,train.activity,train.data)
 train[,"set"] <- cbind(rep("train",nrow(train)))
 
 # Merge the Test and Train datasets into a single set
-message("Combining the imported test and train datasets into a single set.")
+message("Combining the assembled 'test' and 'train' datasets into one full set.")
 full <- rbind(train,test)
 full[,1] <- as.factor(full[,1])
 full[,2] <- as.factor(full[,2])
@@ -45,6 +45,7 @@ targetset <- full[,1:2]
 targetset <- cbind(targetset,full[,labels.relevant.index])
 
 # Replace activity names with descriptive activity names
+message("Relabeling activities using their imported names.")
 levels(targetset[,"activity"]) <- labels.activity
 
 # Replace column names with descriptive variable names
@@ -65,6 +66,7 @@ labels.relevant <- gsub("Z",".z",labels.relevant,ignore.case=FALSE)
 names(targetset)[3:68] <- labels.relevant
 
 # Create tidy dataset of averages of each variable per subject and activity
+message("Creating tidy dataset of averages of each variable per combination of subject and activity.")
 targetset <- tbl_df(targetset)
 targetset <- group_by(targetset,activity,subject)
 list <- names(targetset)
@@ -74,7 +76,7 @@ list <- gsub("frequency","average.frequency",list)
 names(tidy_data) <- list
 
 # Remove all intermediate data
-message("Cleaning up.")
+message("Cleaning up. Leaving final tidy dataset in R environment for inspection.")
 rm(list=setdiff(ls(), c("tidy_data")))
 
 # Write the tidy data output
