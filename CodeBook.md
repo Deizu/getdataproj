@@ -12,6 +12,8 @@ The authors of the dataset included the following introductory description in th
 
 > The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity...
 
+It is important to note that the authors of the dataset indicate within their *README.txt* file that "Features are normalized and bounded within [-1,1]." **This means that units are not provided with these measurements; they were normalized prior to this analysis and are therefore to be taken as-is.**
+
 ####Citations
 1. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012.
 2. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013. 
@@ -102,7 +104,7 @@ The original and revised variable names used in this analysis are shown below in
 
 #### Variable name transformation
 
-The variable names for these datasets are provided in a standalone file (*/UCI HAR Dataset/features.txt*) and are read into R using <code>read.table()</code>. In order to provide more user-friendly variable names, the originals are processed using <code>gsub()</code> to remove punctuation and expand abbreviations into full words separated by periods and simultaneously drop capital letters by ignoring case during replacment. While the run_analysis.R script performs these operations in a vectorized fashion, the following example illustrates the process for a single variable (#1 from the list above).
+The variable names for these datasets are provided in a standalone file (*/UCI HAR Dataset/features.txt*) and are read into R using <code>read.table()</code>. In order to provide more user-friendly variable names, the originals are processed using <code>gsub()</code> to remove punctuation and expand abbreviations into full words separated by periods and simultaneously drop capital letters by ignoring case during replacment. While the <code>run_analysis.R</code> script performs these operations in a vectorized fashion, the following example illustrates the process for a single variable (#1 from the list above).
 
 **Original**: tBodyAcc-mean()-X
 
