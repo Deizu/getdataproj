@@ -98,6 +98,14 @@ The original and revised variable names used in this analysis are shown below in
 |65| 	fBodyBodyGyroJerkMag-mean()| 	frequency.body.gyroscope.jerk.magnitude.mean|
 |66| 	fBodyBodyGyroJerkMag-std()| 	frequency.body.gyroscope.jerk.magnitude.standard.deviation|
 
+
+domain.target.sensor(.type)(.axis)
+
+ * Domain refers to the time or frequency of the sensor readings.
+ * Target refers to the measurement of the body's movement in space or to the relative effect of gravity.
+ * Sensor refers to either the accelerometer or gyroscope sensors of the smart phone.
+ * Type describes the kind of measurement.
+ * Axis refers to either the X, Y, or Z axis of the phone.
 ----
 
 ##Transformations

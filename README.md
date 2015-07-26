@@ -51,7 +51,8 @@ View(data)
 
 ## Citations
 1. Wickham, H. (2014). Tidy data. The Journal of Statistical Software, 59 (10). Retrieved preprint copy from http://vita.had.co.nz/papers/tidy-data.html (2015).
-dplyr package
-rstudio
-CTA David Hood https://class.coursera.org/getdata-030/forum/thread?thread_id=107
-CTA David Hood https://class.coursera.org/getdata-030/forum/thread?thread_id=37
+2. Wickham, H. (2015). dplyr: A Grammar of Data Manipulation. The Comprehensive R Archive Network. https://cran.r-project.org/web/packages/dplyr/ (2015).
+3. Hood, D. "Tidy Data and the Assignment". Accessed at https://class.coursera.org/getdata-030/forum/thread?thread_id=107 (2015).
+4. Hood, D. "David's personal course project FAQ". Accessed at https://class.coursera.org/getdata-030/forum/thread?thread_id=37 (2015).
+
+Note that additional citations are provided on the *CodeBook.md* markdown document.
