@@ -76,7 +76,7 @@ There were a total of 6 files needed to piece together the original dataset, bec
 
 ##### Combining each set individually
 
-Each of the 3 files (X, y, and subject) were read into R using <code>read.table()</code> with default settings and then combined using the <code>cbind()</code> function, placing the columns in the following order: subject, activity, measurement. In case a future user needs to parse through which observations came from which original set as they step through the <code>run_analysis.R</code> script in the future, one further <code>cbind()</code> has been used to place a column called "set" which defines the source value as either "test" or "train" appropriately. Note that this column is immediately dropped when the analysis continues, as it is not required for the final tidy data output.
+Each of the 3 files (X, y, and subject) were read into R using <code>read.table()</code> with default settings and then combined using the <code>cbind()</code> function, placing the columns in the following order: activity, subject, measurement. In case a future user needs to parse through which observations came from which original set as they step through the <code>run_analysis.R</code> script in the future, one further <code>cbind()</code> has been used to place a column called "set" which defines the source value as either "test" or "train" appropriately. Note that this column is immediately dropped when the analysis continues, as it is not required for the final tidy data output.
 
 ##### Combining the Test and Train datasets
 
