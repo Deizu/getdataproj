@@ -102,7 +102,7 @@ imported_tidy_data <- read.table("./tidy_data.txt",stringsAsFactors=TRUE,header=
 ````
 The tidy dataset submitted for this Coursera course project is also available online. To use it instead, please use the following code.
 ````
-address <- "https://s3.amazonaws.com/coursera-uploads/user-8359e34dc2d78171cdbf41fb/975114/asst-3/e7bf88f033d811e5866051a39e928b79.txt"
+address <- "https://s3.amazonaws.com/coursera-uploads/user-8359e34dc2d78171cdbf41fb/975114/asst-3/fd1f75e033db11e5b42eef7d236f8319.txt"
 address <- sub("^https", "http", address)
 data <- read.table(url(address), stringsAsFactors=TRUE, header = TRUE)
 View(data)

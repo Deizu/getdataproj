@@ -12,7 +12,7 @@ message("Combining the test data into a single 'test' set.")
 test.data <- read.table("./UCI HAR Dataset/test/X_test.txt")
 test.activity <- read.table("./UCI HAR Dataset/test/y_test.txt")
 test.subject <- read.table("./UCI HAR Dataset/test/subject_test.txt")
-test <- cbind(test.subject,test.activity,test.data)
+test <- cbind(test.activity,test.subject,test.data)
 test[,"set"] <- cbind(rep("test",nrow(test)))
 
 # Combine the Train Data into a single set
@@ -20,7 +20,7 @@ message("Combining the train data into a single 'train' set.")
 train.data <- read.table("./UCI HAR Dataset/train/X_train.txt")
 train.activity <- read.table("./UCI HAR Dataset/train/y_train.txt")
 train.subject <- read.table("./UCI HAR Dataset/train/subject_train.txt")
-train <- cbind(train.subject,train.activity,train.data)
+train <- cbind(train.activity,train.subject,train.data)
 train[,"set"] <- cbind(rep("train",nrow(train)))
 
 # Merge the Test and Train datasets into a single set
@@ -32,7 +32,7 @@ full[,564] <- as.factor(full[,564])
 
 # Add appropriate column labels to the complete dataset
 message("Adding original column names to the full dataset.")
-labels.columns <- c("subject","activity")
+labels.columns <- c("activity","subject")
 labels.columns <- append(labels.columns,as.vector(labels.features[,2]))
 labels.columns <- c(labels.columns, c("set"))
 names(full) <- labels.columns
